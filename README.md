@@ -136,4 +136,64 @@ pos = {
     'Earthquake': (2, 0),
     'Alarm': (1, -2),
     'JohnCalls': (0, -4),
+    'MaryCalls': (2, -4)
+}
+
+# Draw the graph
+nx.draw(
+    G,
+    pos,
+    with_labels=True,
+    node_size=1500,
+    node_color='skyblue',
+    font_size=10,
+    font_weight='bold',
+    arrowsize=20
+)
+
+plt.title("Bayesian Network: Alarm Problem")
+plt.show()
+
+# Initialize Gibbs Sampling
+gibbs_sampler = GibbsSampling(network)
+
+# Number of samples
+num_samples = 10000
+
+# Perform sampling
+samples = gibbs_sampler.sample(size=num_samples)
+
+# Query variable
+query_variable = 'Burglary'
+
+# Approximate probability
+query_result = samples[query_variable].value_counts(normalize=True)
+
+# Print result
+print(f"\nApproximate Probabilities of {query_variable}:")
+print(query_result)
+```
+
+## Output:
+<Show your results>
+<img width="723" height="561" alt="image" src="https://github.com/user-attachments/assets/0048851e-9a18-45bd-a0b4-9c040ad0fc44" />
+
+   
+<img width="518" height="101" alt="image" src="https://github.com/user-attachments/assets/aae421d7-fc90-4217-8c27-804b9103c52a" />
+
+
+## Result:
+Thus, Gibb's Sampling( Approximate Inference method) is succuessfully implemented using python    ('Alarm', 'MaryCalls')
+]
+
+# Add nodes and edges
+G.add_nodes_from(nodes)
+G.add_edges_from(edges)
+
+# Set positions for nodes
+pos = {
+    'Burglary': (0, 0),
+    'Earthquake': (2, 0),
+    'Alarm': (1, -2),
+    'JohnCalls': (0, -4),
     'MaryCall
